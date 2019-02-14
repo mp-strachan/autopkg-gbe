@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Identifier</key>
-	<string>local.override.filewave.ResilioSync</string>
+	<string>com.github.mp-strachan.filewave.ResilioSync</string>
 	<key>Input</key>
 	<dict>
 		<key>BUNDLE_ID</key>
