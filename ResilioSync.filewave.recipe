@@ -2,63 +2,72 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Description</key>
+	<string>Downloads the latest Resilio Sync disk image and imports into FileWave.</string>
 	<key>Identifier</key>
 	<string>com.github.mp-strachan.filewave.ResilioSync</string>
 	<key>Input</key>
 	<dict>
-		<key>BUNDLE_ID</key>
-		<string>com.resilio.Sync</string>
-		<key>DOWNLOAD_URL</key>
-		<string>https://download-cdn.getsync.com/stable/osx/Resilio-Sync.dmg</string>
 		<key>NAME</key>
 		<string>Resilio Sync</string>
+        <key>fw_destination_root</key>
+        <string>/Applications/%NAME%.app</string>
 	</dict>
+	<key>MinimumVersion</key>
+	<string>0.6.1</string>
 	<key>ParentRecipe</key>
-	<string>com.github.homebysix.install.ResilioSync</string>
-	<key>ParentRecipeTrustInfo</key>
-	<dict>
-		<key>non_core_processors</key>
+	<string>com.github.homebysix.download.ResilioSync</string>
+	<key>Process</key>
+	<array>
 		<dict>
-			<key>com.github.autopkg.filewave.FWTool/FileWaveImporter</key>
+			<key>Arguments</key>
 			<dict>
-				<key>git_hash</key>
-				<string>d85d438d1ffe05c20f19e0bd833481583308876e</string>
-				<key>path</key>
-				<string>/Volumes/Platter/AutoPKG/RecipeRepos/com.github.autopkg.filewave/FWTool/FileWaveImporter.py</string>
-				<key>sha256_hash</key>
-				<string>2e6f2836e3a7ffd5077a0b72f883639c5489520b0af8dfeb83650654ec8f966e</string>
+				<key>dmg_path</key>
+				<string>%pathname%</string>
 			</dict>
+			<key>Processor</key>
+			<string>AppDmgVersioner</string>
 		</dict>
-		<key>parent_recipes</key>
 		<dict>
-			<key>com.github.homebysix.download.ResilioSync</key>
+			<key>Arguments</key>
 			<dict>
-				<key>git_hash</key>
-				<string>97353b67bb28728a27138018ac2d150a23db0bfb</string>
-				<key>path</key>
-				<string>/Volumes/Platter/AutoPKG/RecipeRepos/com.github.autopkg.homebysix-recipes/Resilio/ResilioSync.download.recipe</string>
-				<key>sha256_hash</key>
-				<string>b28707e34868703b5bf3f83679c88b7656004f43742bd9fcd7d2779952c4ae10</string>
+				<key>pkgdirs</key>
+				<dict>
+					<key>Applications</key>
+					<string>0775</string>
+				</dict>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%</string>
 			</dict>
-			<key>com.github.homebysix.install.ResilioSync</key>
-			<dict>
-				<key>git_hash</key>
-				<string>97353b67bb28728a27138018ac2d150a23db0bfb</string>
-				<key>path</key>
-				<string>/Volumes/Platter/AutoPKG/RecipeRepos/com.github.autopkg.homebysix-recipes/Resilio/ResilioSync.install.recipe</string>
-				<key>sha256_hash</key>
-				<string>eabe68edf5fd3ab47b309e069ae5ce094f94d153aa21a5213c89f0dcec54bf88</string>
-			</dict>
-			<key>com.github.homebysix.pkg.ResilioSync</key>
-			<dict>
-				<key>git_hash</key>
-				<string>97353b67bb28728a27138018ac2d150a23db0bfb</string>
-				<key>path</key>
-				<string>/Volumes/Platter/AutoPKG/RecipeRepos/com.github.autopkg.homebysix-recipes/Resilio/ResilioSync.pkg.recipe</string>
-				<key>sha256_hash</key>
-				<string>99c3ede84ac43cd6e3afa1b68d54827277cf27568796e41a42c25e108e49b9bb</string>
-			</dict>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
 		</dict>
-	</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%pkgroot%/Applications/%app_name%</string>
+				<key>source_path</key>
+				<string>%pathname%/%app_name%</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>fw_app_bundle_id</key>
+				<string>%bundleid%</string>
+				<key>fw_app_version</key>
+				<string>%version%</string>
+				<key>fw_fileset_name</key>
+				<string>%NAME% - %version%</string>
+				<key>fw_import_source</key>
+				<string>%pkgroot%/Applications/%app_name%</string>
+			</dict>
+			<key>Processor</key>
+			<string>com.github.autopkg.filewave.FWTool/FileWaveImporter</string>
+		</dict>
+	</array>
 </dict>
 </plist>
