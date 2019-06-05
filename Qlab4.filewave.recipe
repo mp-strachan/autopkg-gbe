@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of QLab4 and creates a package.</string>
+	<string>Downloads the latest version of QLab4 and imports .app into Filewave fileset.</string>
 	<key>Identifier</key>
-	<string>com.github.mp-strachan.pkg.QLab4</string>
+	<string>com.github.mp-strachan.filewave.QLab4</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
