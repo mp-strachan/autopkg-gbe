@@ -3,33 +3,37 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of QLab3 and imports .app into Filewave fileset.</string>
+	<string>Downloads the latest version of QLab3, creates a fileset, and copies it into your FileWave Server.</string>
 	<key>Identifier</key>
 	<string>com.github.mp-strachan.filewave.QLab3</string>
 	<key>Input</key>
 	<dict>
-		<key>NAME</key>
+		<key>APP_FILENAME</key>
 		<string>QLab3</string>
-		<key>fw_destination_root</key>
-        <string>/Applications</string>
+		<key>NAME</key>
+		<string>QLab</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.6.1</string>
+	<string>1.0.0</string>
 	<key>ParentRecipe</key>
-	<string>com.github.timsutton.download.qlab3</string>
+	<string>com.github.mp-strachan.download.QLab</string>
 	<key>Process</key>
 	<array>
 		<dict>
 			<key>Arguments</key>
 			<dict>
 				<key>fw_app_bundle_id</key>
-				<string>%bundleid%</string>
+				<string>com.figure53.QLab.3</string>
 				<key>fw_app_version</key>
 				<string>%version%</string>
+				<key>fw_destination_root</key>
+				<string>/Applications/QLab3.app</string>
+				<key>fw_fileset_group</key>
+				<string>Testing</string>
 				<key>fw_fileset_name</key>
 				<string>%NAME% - %version%</string>
 				<key>fw_import_source</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%</string>
+				<string>%RECIPE_CACHE_DIR%/%NAME%/QLab3.app</string>
 			</dict>
 			<key>Processor</key>
 			<string>com.github.autopkg.filewave.FWTool/FileWaveImporter</string>
