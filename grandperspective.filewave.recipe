@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of Grand Perpective and imports into Filewave.</string>
+	<string>Downloads the latest version of Grand Perpective and imports into Filewave. v2</string>
 	<key>Identifier</key>
 	<string>com.github.mp-strachan.filewave.GrandPerspective</string>
 	<key>Input</key>
