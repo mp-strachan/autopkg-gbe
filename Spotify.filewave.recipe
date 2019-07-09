@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Identifier</key>
+	<string>local.override.filewave.fileset.Spotify</string>
+	<key>Input</key>
+	<dict>
+		<key>DOWNLOAD_URL</key>
+		<string>https://download.scdn.co/Spotify.dmg</string>
+		<key>NAME</key>
+		<string>Spotify</string>
+		<key>fw_app_bundle_id</key>
+		<string>com.github.nielshojen.filewave.Spotify</string>
+	</dict>
+	<key>ParentRecipe</key>
+	<string>com.github.nielshojen.filewave.Spotify</string>
+	<key>ParentRecipeTrustInfo</key>
+	<dict>
+		<key>non_core_processors</key>
+		<dict>
+			<key>com.github.autopkg.filewave.FWTool/FileWaveImporter</key>
+			<dict>
+				<key>git_hash</key>
+				<string>d85d438d1ffe05c20f19e0bd833481583308876e</string>
+				<key>path</key>
+				<string>/Volumes/Platter/AutoPKG/RecipeRepos/com.github.autopkg.filewave/FWTool/FileWaveImporter.py</string>
+				<key>sha256_hash</key>
+				<string>2e6f2836e3a7ffd5077a0b72f883639c5489520b0af8dfeb83650654ec8f966e</string>
+			</dict>
+			<key>com.github.nielshojen.SharedProcessors/ModeChanger</key>
+			<dict>
+				<key>git_hash</key>
+				<string>c123edb56255d0b48c5ebbf9f12f975516a3bee7</string>
+				<key>path</key>
+				<string>/Volumes/Platter/AutoPKG/RecipeRepos/com.github.nielshojen.autopkg-recipes/SharedProcessors/ModeChanger.py</string>
+				<key>sha256_hash</key>
+				<string>68175544006accbdacc62d7475ce8e7fc1ddcc828dec13f6c121eeec31630fa4</string>
+			</dict>
+		</dict>
+		<key>parent_recipes</key>
+		<dict>
+			<key>com.github.autopkg.download.Spotify</key>
+			<dict>
+				<key>git_hash</key>
+				<string>4f69d86d0d09b299d47b0f0197a03d97a67ad4ef</string>
+				<key>path</key>
+				<string>/Volumes/Platter/AutoPKG/RecipeRepos/com.github.autopkg.recipes/Spotify/Spotify.download.recipe</string>
+				<key>sha256_hash</key>
+				<string>71b0fbf50f45a1b55b1cb483811bd129c590bc37e1bbed17defd1ad5609f5169</string>
+			</dict>
+			<key>com.github.nielshojen.filewave.Spotify</key>
+			<dict>
+				<key>git_hash</key>
+				<string>7e4babc845f0ba3ba3d8f86240e08a33e3560f83</string>
+				<key>path</key>
+				<string>/Volumes/Platter/AutoPKG/RecipeRepos/com.github.nielshojen.autopkg-recipes/Spotify/Spotify.fileset.filewave.recipe</string>
+				<key>sha256_hash</key>
+				<string>b40f8f2f95920df980acb0b173a2bf0c5b4c83703636d30b00d993354def889d</string>
+			</dict>
+		</dict>
+	</dict>
+</dict>
+</plist>
