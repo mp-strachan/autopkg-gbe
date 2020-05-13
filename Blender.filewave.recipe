@@ -5,7 +5,7 @@
     <key>Description</key>
     <string>Downloads the current release version of the Blender Installer Package and imports it into FileWave.</string>
     <key>Identifier</key>
-    <string>com.github.andredb90.filewave.Blender</string>
+    <string>com.github.mpstrachan.filewave.Blender</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
