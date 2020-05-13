@@ -3,35 +3,69 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads latest version of OBS Studio and imports into FileWave.</string>
+	<string>Downloads latest OSB disk image and imports into FileWave.</string>
 	<key>Identifier</key>
 	<string>com.github.mp-strachan.filewave.OBS</string>
-	<key>MinimumVersion</key>
-	<string>0.6.1</string>
-	<key>ParentRecipe</key>
-	<string>com.github.nstrauss.download.OBS</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
 		<string>OBS Studio</string>
-		<key>fw_app_bundle_id</key>
-		<string>com.github.mp-strachan.filewave.OBS</string>
+		<key>fw_destination_root</key>
+        <string>/Applications/%NAME%.app</string>
 		<key>DISABLE_CODE_SIGNATURE_VERIFICATION</key>
         <string>True</string>
 	</dict>
+	<key>MinimumVersion</key>
+	<string>0.6.1</string>
+	<key>ParentRecipe</key>
+	<string>com.github.nstrauss.download.OBS</string>
 	<key>Process</key>
 	<array>
 		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>dmg_path</key>
+				<string>%pathname%</string>
+			</dict>
+			<key>Processor</key>
+			<string>AppDmgVersioner</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkgdirs</key>
+				<dict>
+					<key>Applications</key>
+					<string>0775</string>
+				</dict>
+				<key>pkgroot</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%</string>
+			</dict>
+			<key>Processor</key>
+			<string>PkgRootCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%pkgroot%/Applications/%app_name%</string>
+				<key>source_path</key>
+				<string>%pathname%/%app_name%</string>
+			</dict>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
 				<key>fw_app_bundle_id</key>
-				<string>%fw_app_bundle_id%</string>
+				<string>%bundleid%</string>
 				<key>fw_app_version</key>
 				<string>%version%</string>
 				<key>fw_fileset_name</key>
 				<string>%NAME% - %version%</string>
 				<key>fw_import_source</key>
-				<string>%pathname%</string>
+				<string>%pkgroot%/Applications/%app_name%</string>
 			</dict>
 			<key>Processor</key>
 			<string>com.github.autopkg.filewave.FWTool/FileWaveImporter</string>
